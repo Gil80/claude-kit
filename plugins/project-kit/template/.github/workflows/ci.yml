@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        if: hashFiles('package.json') != ''
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Set up Python
+        if: hashFiles('pyproject.toml', 'requirements.txt', 'setup.py') != ''
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      # Same command as local development. Exit 3 (no tests yet) fails CI on purpose.
+      - name: Test
+        run: bash scripts/test.sh

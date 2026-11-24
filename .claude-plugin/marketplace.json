@@ -1,0 +1,12 @@
+{
+  "name": "claude-kit",
+  "description": "Personal Claude Code standards: project scaffold, guardrails and checkups.",
+  "owner": { "name": "Gil80" },
+  "plugins": [
+    {
+      "name": "project-kit",
+      "source": "./plugins/project-kit",
+      "description": "Bootstraps every new project with a verifiable structure and reminds you when one is missing."
+    }
+  ]
+}
