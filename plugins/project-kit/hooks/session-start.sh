@@ -20,6 +20,9 @@ esac
 # Is this folder effectively empty (a brand new project)?
 visible="$(ls -A "$dir" 2>/dev/null | grep -v -E '^(\.git|\.DS_Store|\.claude|\.idea|\.vscode)$' | head -n 1)"
 
+# Existing project that never ran bootstrap: stay quiet. Only new (empty) folders get the offer.
+[ -n "$visible" ] && [ ! -f "$dir/.project-kit" ] && exit 0
+
 missing=""
 for f in .project-kit CLAUDE.md README.md .gitignore .env.example scripts/test.sh .claude/settings.json .claude/skills/verify/SKILL.md; do
   [ -e "$dir/$f" ] || missing="$missing $f"

@@ -41,7 +41,8 @@ out=$(guard '{"tool_name":"Bash","tool_input":{"command":"npm test"}}'); check "
 
 echo "== session start"
 mkdir -p "$tmp/empty"; out=$(start "$tmp/empty"); check "empty folder offers bootstrap" 0 $? "$out" "EMPTY"
-mkdir -p "$tmp/partial"; echo x > "$tmp/partial/app.py"; out=$(start "$tmp/partial"); check "partial project lists missing files" 0 $? "$out" "scripts/test.sh"
+mkdir -p "$tmp/existing"; echo x > "$tmp/existing/app.py"; out=$(start "$tmp/existing"); check "existing project without .project-kit runs" 0 $?; [ -z "$out" ]; check "existing project without .project-kit stays silent" 0 $?
+mkdir -p "$tmp/partial"; echo x > "$tmp/partial/app.py"; cp "$kit/template/.project-kit" "$tmp/partial/"; out=$(start "$tmp/partial"); check "bootstrapped project lists missing files" 0 $? "$out" "scripts/test.sh"
 mkdir -p "$tmp/ignored"; echo x > "$tmp/ignored/a"; touch "$tmp/ignored/.project-kit-ignore"
 out=$(start "$tmp/ignored"); check "opt-out file silences hook" 0 $?; [ -z "$out" ]; check "opt-out output empty" 0 $?
 out=$(CLAUDE_PROJECT_DIR="$HOME" CLAUDE_PLUGIN_ROOT="$kit" bash "$kit/hooks/session-start.sh" </dev/null); [ -z "$out" ]; check "home folder stays quiet" 0 $?

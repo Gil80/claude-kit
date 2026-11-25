@@ -27,7 +27,7 @@ Or inside Claude Code: `/plugin marketplace add Gil80/claude-kit`, then `/plugin
 
 | Piece | What it does | Where |
 |---|---|---|
-| Session reminder | Every new session: shares the working agreements, and offers bootstrap if standard files are missing or a checkup if the project is stale or behind the kit version | `plugins/project-kit/hooks/session-start.sh` |
+| Session reminder | Empty folder: offers bootstrap. Bootstrapped project (has `.project-kit`): shares the working agreements, flags missing standard files, suggests a checkup if stale or behind the kit version. Any other existing project: silent |  `plugins/project-kit/hooks/session-start.sh` |
 | Secret guard | Blocks Claude from reading or printing `.env` files and private keys, in every project | `plugins/project-kit/hooks/secret-guard.sh` |
 | `/project-kit:bootstrap` | Adds the standard files (never overwrites), fills in the TODOs, adds a first test and runs it | `plugins/project-kit/skills/bootstrap/` |
 | `/project-kit:checkup` | Finds stale instructions, broken commands and drift from the current template | `plugins/project-kit/skills/checkup/` |

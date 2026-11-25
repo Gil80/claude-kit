@@ -1,6 +1,6 @@
 {
   "name": "project-kit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Bootstraps every new project with a verifiable structure, guards secrets, and reminds you when a project is missing the standard setup.",
   "author": { "name": "Gil80" },
   "keywords": ["scaffold", "template", "verification", "standards"]
