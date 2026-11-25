@@ -64,6 +64,14 @@ The project's own files work without the plugin (in cloud sessions, or for colla
 - Silence reminders in one project: create an empty `.project-kit-ignore` file in its root.
 - Skip the test gate for one session: `export PROJECT_KIT_SKIP_TEST_GATE=1` before starting Claude.
 
+## Reference: repo structure for Claude Code
+
+The kit's template follows the layout in this infographic.
+
+![How to structure your repo for Claude Code](docs/images/repo-structure-for-claude-code.png)
+
+Image credit: Julio Casal ([@juliocasal](https://lnkd.in/p/dZ2hhbR8)).
+
 ## Background
 
 See [docs/GUIDE.md](docs/GUIDE.md) for the reasoning behind every piece.
